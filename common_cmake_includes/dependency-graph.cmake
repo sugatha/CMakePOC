@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.12...3.16)
+
 find_program(DOT_EXE "dot")
 if(DOT_EXE)
   message(STATUS "dot found: ${DOT_EXE}")
@@ -23,10 +25,11 @@ function(generate_graph IMG_TYPE)
       message(FATAL_ERROR "`dot` is needed to build the dependency graph.")
     endif()
 
+	message("B4 add_custom_target")
 	add_custom_target(graphviz ALL
 		COMMAND ${CMAKE_COMMAND} . "--graphviz=${PROJECT_NAME}.dot"
 		COMMAND dot -T${IMG_TYPE} ${PROJECT_NAME}.dot -o ${PROJECT_NAME}.${IMG_TYPE}
-		COMMENT
-        "Dependency graph for ${PROJECT_NAME} generated and located at ${OUT_DIR}/${PROJECT_NAME}.${IMG_TYPE}")
+		COMMENT "Dependency graph for ${PROJECT_NAME} generated and located at ${OUT_DIR}/${PROJECT_NAME}.${IMG_TYPE}")
+	message(After add_custom_target)
 endfunction()
 

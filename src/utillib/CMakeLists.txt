@@ -1,6 +1,7 @@
 # ${CMAKE_SOURCE_DIR}/utillib/CMakeLists.txt
 cmake_minimum_required(VERSION 3.12...3.16)
 
+message(STATUS "--------------------Inside utillib CMakeLists")
 # A header only library
 
 # setting the version of the header only library
@@ -15,6 +16,7 @@ project(
   DESCRIPTION    "A header only c++ library"
 )
 
+message(STATUS "********  PROJECT_SOURCE_DIR - ${PROJECT_SOURCE_DIR}")
 set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/../../library)
 
 set(header_path "${CMAKE_CURRENT_SOURCE_DIR}/include")
